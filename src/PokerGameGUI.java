@@ -19,11 +19,13 @@ public class PokerGameGUI extends javax.swing.JFrame {
      */
     private static JLabel[] myCards;
     private static JLabel[] compCards;
+    private static GameState newGame;
     
     public PokerGameGUI() {
         initComponents();
         myCards = new JLabel[] {myCardLabel1, myCardLabel2, myCardLabel3, myCardLabel4, myCardLabel5};
         compCards = new JLabel[] {compCardLabel1, compCardLabel2, compCardLabel3, compCardLabel4, compCardLabel5};
+        newGame = new GameState();
     }
 
     /**
@@ -62,7 +64,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
         myCardLabel4 = new javax.swing.JLabel();
         myCard5 = new javax.swing.JPanel();
         myCardLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        DealCards = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -403,10 +405,10 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jButton1.setText("Deal Cards");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        DealCards.setText("Deal Cards");
+        DealCards.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                DealCardsActionPerformed(evt);
             }
         });
 
@@ -418,7 +420,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
+                        .addComponent(DealCards)
                         .addGap(185, 185, 185)
                         .addComponent(yourCards))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -437,7 +439,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(60, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(myCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -447,7 +449,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                 .addGap(60, 60, 60)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(yourCards)
-                    .addComponent(jButton1))
+                    .addComponent(DealCards))
                 .addGap(11, 11, 11))
         );
 
@@ -489,17 +491,18 @@ public class PokerGameGUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void DealCardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DealCardsActionPerformed
         // TODO add your handling code here:
-        GameState newGame = new GameState();
         newGame.dealCards();
         Card[] c = newGame.getMyCards();
         for (int i = 0; i < 5; i = i + 1){
             javax.swing.JLabel tempLabel = myCards[i];
             tempLabel.setText(c[i].getNumber()+ " "+c[i].getSuitCode());
-            //tempLabel.setForeground(c[i].getColor());
+            tempLabel.setForeground(c[i].getColor());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        DealCards.setEnabled(false);
+
+    }//GEN-LAST:event_DealCardsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -537,6 +540,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton DealCards;
     private javax.swing.JPanel compCard1;
     private javax.swing.JPanel compCard2;
     private javax.swing.JPanel compCard3;
@@ -548,7 +552,6 @@ public class PokerGameGUI extends javax.swing.JFrame {
     private javax.swing.JLabel compCardLabel4;
     private javax.swing.JLabel compCardLabel5;
     private javax.swing.JLabel ex2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;

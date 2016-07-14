@@ -10,11 +10,21 @@
  */
 public class GameState {
     
-    private Card[] compCards= new Card[5];
+    private Card[] compCards = new Card[5];
     private Card[] myCards = new Card[5];
     private Deck gameDeck;
+    private int compChips;
+    private int myChips;
+    
     
     public GameState(){
+        gameDeck = new Deck();
+        gameDeck.shuffleDeck();
+        compChips = 25;
+        myChips = 25;
+    }
+    
+    public void newRound(){
         gameDeck = new Deck();
         gameDeck.shuffleDeck();
     }
