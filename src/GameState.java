@@ -15,13 +15,14 @@ public class GameState {
     private Deck gameDeck;
     private int compChips;
     private int myChips;
+    private int Pot;
     
     
     public GameState(){
         gameDeck = new Deck();
         gameDeck.shuffleDeck();
-        compChips = 25;
-        myChips = 25;
+        compChips = 50;
+        myChips = 50;
     }
     
     public void newRound(){
@@ -31,6 +32,20 @@ public class GameState {
     
     public Card[] getMyCards(){
         return myCards;
+    }
+    
+    public void anteUp(){
+        Pot += 10;
+        myChips -= 5;
+        compChips -= 5;
+    }
+    
+    public int getCompChips(){
+        return compChips;
+    }
+    
+    public int getMyChips(){
+        return myChips;
     }
     
     public Card[] getCompCards(){
