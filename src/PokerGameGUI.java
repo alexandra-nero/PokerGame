@@ -1,3 +1,7 @@
+
+import java.awt.Color;
+import javax.swing.JLabel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,8 +17,13 @@ public class PokerGameGUI extends javax.swing.JFrame {
     /**
      * Creates new form PokerGameGUI
      */
+    private static JLabel[] myCards;
+    private static JLabel[] compCards;
+    
     public PokerGameGUI() {
         initComponents();
+        myCards = new JLabel[] {myCardLabel1, myCardLabel2, myCardLabel3, myCardLabel4, myCardLabel5};
+        compCards = new JLabel[] {compCardLabel1, compCardLabel2, compCardLabel3, compCardLabel4, compCardLabel5};
     }
 
     /**
@@ -32,15 +41,15 @@ public class PokerGameGUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         compCard1 = new javax.swing.JPanel();
-        myCardLabel6 = new javax.swing.JLabel();
+        compCardLabel1 = new javax.swing.JLabel();
         compCard2 = new javax.swing.JPanel();
-        myCardLabel7 = new javax.swing.JLabel();
+        compCardLabel2 = new javax.swing.JLabel();
         compCard3 = new javax.swing.JPanel();
-        myCardLabel8 = new javax.swing.JLabel();
+        compCardLabel3 = new javax.swing.JLabel();
         compCard4 = new javax.swing.JPanel();
-        myCardLabel9 = new javax.swing.JLabel();
+        compCardLabel4 = new javax.swing.JLabel();
         compCard5 = new javax.swing.JPanel();
-        myCardLabel10 = new javax.swing.JLabel();
+        compCardLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         yourCards = new javax.swing.JLabel();
         myCard1 = new javax.swing.JPanel();
@@ -66,6 +75,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Poker Game");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -73,7 +83,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(331, 331, 331)
+                .addGap(310, 310, 310)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -87,10 +97,13 @@ public class PokerGameGUI extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel2.setText("Computer's Cards");
 
         compCard1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         compCard1.setPreferredSize(new java.awt.Dimension(80, 109));
+
+        compCardLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout compCard1Layout = new javax.swing.GroupLayout(compCard1);
         compCard1.setLayout(compCard1Layout);
@@ -100,7 +113,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel6)
+                    .addComponent(compCardLabel1)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         compCard1Layout.setVerticalGroup(
@@ -109,12 +122,14 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel6)
+                    .addComponent(compCardLabel1)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         compCard2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         compCard2.setPreferredSize(new java.awt.Dimension(80, 109));
+
+        compCardLabel2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout compCard2Layout = new javax.swing.GroupLayout(compCard2);
         compCard2.setLayout(compCard2Layout);
@@ -124,7 +139,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel7)
+                    .addComponent(compCardLabel2)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         compCard2Layout.setVerticalGroup(
@@ -133,12 +148,14 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard2Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel7)
+                    .addComponent(compCardLabel2)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         compCard3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         compCard3.setPreferredSize(new java.awt.Dimension(80, 109));
+
+        compCardLabel3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout compCard3Layout = new javax.swing.GroupLayout(compCard3);
         compCard3.setLayout(compCard3Layout);
@@ -148,7 +165,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel8)
+                    .addComponent(compCardLabel3)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         compCard3Layout.setVerticalGroup(
@@ -157,12 +174,14 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard3Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel8)
+                    .addComponent(compCardLabel3)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         compCard4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         compCard4.setPreferredSize(new java.awt.Dimension(80, 109));
+
+        compCardLabel4.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout compCard4Layout = new javax.swing.GroupLayout(compCard4);
         compCard4.setLayout(compCard4Layout);
@@ -172,7 +191,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard4Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel9)
+                    .addComponent(compCardLabel4)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         compCard4Layout.setVerticalGroup(
@@ -181,12 +200,14 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard4Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel9)
+                    .addComponent(compCardLabel4)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         compCard5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         compCard5.setPreferredSize(new java.awt.Dimension(80, 109));
+
+        compCardLabel5.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout compCard5Layout = new javax.swing.GroupLayout(compCard5);
         compCard5.setLayout(compCard5Layout);
@@ -196,7 +217,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard5Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel10)
+                    .addComponent(compCardLabel5)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         compCard5Layout.setVerticalGroup(
@@ -205,7 +226,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
             .addGroup(compCard5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(compCard5Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(myCardLabel10)
+                    .addComponent(compCardLabel5)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -214,9 +235,9 @@ public class PokerGameGUI extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(314, Short.MAX_VALUE)
+                .addContainerGap(282, Short.MAX_VALUE)
                 .addComponent(jLabel2)
-                .addGap(312, 312, 312))
+                .addGap(282, 282, 282))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(111, 111, 111)
                 .addComponent(compCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -247,12 +268,15 @@ public class PokerGameGUI extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
+        yourCards.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         yourCards.setText("Your Cards");
 
         myCard1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         myCard1.setMinimumSize(new java.awt.Dimension(100, 100));
         myCard1.setName(""); // NOI18N
         myCard1.setPreferredSize(new java.awt.Dimension(80, 109));
+
+        myCardLabel1.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout myCard1Layout = new javax.swing.GroupLayout(myCard1);
         myCard1.setLayout(myCard1Layout);
@@ -278,6 +302,8 @@ public class PokerGameGUI extends javax.swing.JFrame {
         myCard2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         myCard2.setPreferredSize(new java.awt.Dimension(80, 109));
 
+        myCardLabel2.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+
         javax.swing.GroupLayout myCard2Layout = new javax.swing.GroupLayout(myCard2);
         myCard2.setLayout(myCard2Layout);
         myCard2Layout.setHorizontalGroup(
@@ -301,6 +327,8 @@ public class PokerGameGUI extends javax.swing.JFrame {
 
         myCard3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         myCard3.setPreferredSize(new java.awt.Dimension(80, 109));
+
+        myCardLabel3.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout myCard3Layout = new javax.swing.GroupLayout(myCard3);
         myCard3.setLayout(myCard3Layout);
@@ -326,6 +354,8 @@ public class PokerGameGUI extends javax.swing.JFrame {
         myCard4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         myCard4.setPreferredSize(new java.awt.Dimension(80, 109));
 
+        myCardLabel4.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
+
         javax.swing.GroupLayout myCard4Layout = new javax.swing.GroupLayout(myCard4);
         myCard4.setLayout(myCard4Layout);
         myCard4Layout.setHorizontalGroup(
@@ -349,6 +379,8 @@ public class PokerGameGUI extends javax.swing.JFrame {
 
         myCard5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         myCard5.setPreferredSize(new java.awt.Dimension(80, 109));
+
+        myCardLabel5.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
 
         javax.swing.GroupLayout myCard5Layout = new javax.swing.GroupLayout(myCard5);
         myCard5.setLayout(myCard5Layout);
@@ -387,7 +419,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton1)
-                        .addGap(218, 218, 218)
+                        .addGap(185, 185, 185)
                         .addComponent(yourCards))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(107, 107, 107)
@@ -405,7 +437,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(33, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(myCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,6 +453,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
 
         jMenu1.setBorder(null);
         jMenu1.setText("File");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
 
         jMenuItem3.setText("New Game");
         jMenu1.add(jMenuItem3);
@@ -458,18 +491,14 @@ public class PokerGameGUI extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Deck d = new Deck();
-        d.shuffleDeck();
-        Card c1 = d.getCard();
-        myCardLabel1.setText(c1.getNumber()+" "+c1.getSuitCode());
-        Card c2 = d.getCard();
-        myCardLabel2.setText(c2.getNumber()+" "+c2.getSuitCode());
-        Card c3 = d.getCard();
-        myCardLabel3.setText(c3.getNumber()+" "+c3.getSuitCode());
-        Card c4 = d.getCard();
-        myCardLabel4.setText(c4.getNumber()+" "+c4.getSuitCode());
-        Card c5 = d.getCard();
-        myCardLabel5.setText(c5.getNumber()+" "+c5.getSuitCode());
+        GameState newGame = new GameState();
+        newGame.dealCards();
+        Card[] c = newGame.getMyCards();
+        for (int i = 0; i < 5; i = i + 1){
+            javax.swing.JLabel tempLabel = myCards[i];
+            tempLabel.setText(c[i].getNumber()+ " "+c[i].getSuitCode());
+            //tempLabel.setForeground(c[i].getColor());
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -513,6 +542,11 @@ public class PokerGameGUI extends javax.swing.JFrame {
     private javax.swing.JPanel compCard3;
     private javax.swing.JPanel compCard4;
     private javax.swing.JPanel compCard5;
+    private javax.swing.JLabel compCardLabel1;
+    private javax.swing.JLabel compCardLabel2;
+    private javax.swing.JLabel compCardLabel3;
+    private javax.swing.JLabel compCardLabel4;
+    private javax.swing.JLabel compCardLabel5;
     private javax.swing.JLabel ex2;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -531,15 +565,11 @@ public class PokerGameGUI extends javax.swing.JFrame {
     private javax.swing.JPanel myCard4;
     private javax.swing.JPanel myCard5;
     private javax.swing.JLabel myCardLabel1;
-    private javax.swing.JLabel myCardLabel10;
     private javax.swing.JLabel myCardLabel2;
     private javax.swing.JLabel myCardLabel3;
     private javax.swing.JLabel myCardLabel4;
     private javax.swing.JLabel myCardLabel5;
-    private javax.swing.JLabel myCardLabel6;
-    private javax.swing.JLabel myCardLabel7;
-    private javax.swing.JLabel myCardLabel8;
-    private javax.swing.JLabel myCardLabel9;
     private javax.swing.JLabel yourCards;
     // End of variables declaration//GEN-END:variables
+    
 }

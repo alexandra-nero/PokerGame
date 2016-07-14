@@ -1,4 +1,7 @@
 
+import java.awt.Color;
+
+
 /**
  * Poker Game, Lowest Class, Card
  * details the suit and value of the card
@@ -27,7 +30,7 @@ public class Card
             case "s": return "\u2660";
             case "h": return "\u2666";
             case "c": return "\u2663";
-            case"d": return "\u2764";
+            case "d": return "\u2764";
             default: return " ";
         }
     }
@@ -39,6 +42,18 @@ public class Card
             case "c": return 2;
             case"d": return 1;
             default: return 0;
+        }
+    }
+    
+    public Color getColor(){
+        Color black = new Color(0, 0, 0);
+        Color red = new Color(255, 0, 0);
+        switch(this.suit){
+            case "s": return black;
+            case "h": return red;
+            case "c": return black;
+            case"d": return red;
+            default: return black;
         }
     }
     
