@@ -4,7 +4,9 @@
 public class Hand
 {
     private Card[] cards = new Card[5];
-
+    private Card[] winCards;
+    
+    
     public Hand(Card c1, Card c2, Card c3, Card c4, Card c5)
     {
        cards[0] = c1;
@@ -20,8 +22,13 @@ public class Hand
             this.cards = cards;
         }
     }
+    
+    public Card[] getCards(){
+        return cards;
+    }
 
     public Card highCard(){
+        winCards = new Card[] {cards[4]};
         return cards[4];
     }
 
@@ -76,6 +83,7 @@ public class Hand
           String number1 = cards[i].getNumber();
           String number2 = cards[i+1].getNumber();
           if (number1.equals(number2)){
+              winCards = new Card[] {cards[i], cards[i+1]};
               return true;
           }
         }
@@ -92,12 +100,15 @@ public class Hand
       String number4 = cards[3].getNumber();
       String number5 = cards[4].getNumber();
       if (number1.equals(number2) && number2.equals(number3)){
+          winCards = new Card[] {cards[0], cards[1], cards[2]};
           return true;
       }
       else if (number2.equals(number3) && number3.equals(number4)){
+          winCards = new Card[] {cards[1], cards[2], cards[3]};
           return true;
       }
       else if (number3.equals(number4) && number4.equals(number5)){
+          winCards = new Card[] {cards[2], cards[3], cards[4]};
           return true;
       }
       else{

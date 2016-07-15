@@ -10,12 +10,19 @@
  */
 public class GameState {
     
-    private Card[] compCards = new Card[5];
-    private Card[] myCards = new Card[5];
+    private Hand compHand;
+    private Hand myHand;
     private Deck gameDeck;
     private int compChips;
     private int myChips;
     private int Pot;
+    
+    //states: 0 is nothing, waiting
+    //1 is betting 
+    //2 is calling
+    //3 is folded
+    private int compState;
+    private int myState;
     
     
     public GameState(){
@@ -23,15 +30,19 @@ public class GameState {
         gameDeck.shuffleDeck();
         compChips = 50;
         myChips = 50;
+        compState = 0;
+        myState = 0;
     }
     
     public void newRound(){
         gameDeck = new Deck();
         gameDeck.shuffleDeck();
+        compState = 0;
+        myState = 0;
     }
     
     public Card[] getMyCards(){
-        return myCards;
+        return myHand.getCards();
     }
     
     public void anteUp(){
@@ -49,15 +60,38 @@ public class GameState {
     }
     
     public Card[] getCompCards(){
-        return compCards;
+        return compHand.getCards();
+    }
+    
+    public int getCompState(){
+        return compState;
+    }
+    
+    public void setCompState(int state){
+        this.compState = state;
+    }
+    
+    public int getMyState(){
+        return myState;
+    }
+    
+    public void setMyState(int state){
+        this.myState = state;
     }
     
     public void dealCards(){
+        Card[] compCards = new Card[5];
+        Card[] myCards = new Card[5];
         for (int i = 0; i < 5; i = i + 1){
             compCards[i] = gameDeck.getCard();
             myCards[i] = gameDeck.getCard();
         }
+        compHand = new Hand(compCards);
+        myHand = new Hand(myCards);
+        compHand.order();
+        myHand.order();
     }
+    
     
     
 }

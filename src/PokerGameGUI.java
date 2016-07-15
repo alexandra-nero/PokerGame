@@ -1,6 +1,7 @@
 
 import java.awt.Color;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -19,16 +20,25 @@ public class PokerGameGUI extends javax.swing.JFrame {
      */
     private static JLabel[] myCards;
     private static JLabel[] compCards;
+    private static JPanel[] myCPane;
+    private static JPanel[] compCPane;
     private static GameState newGame;
+    
+    Color tan = new Color(215,206,199);
     
     public PokerGameGUI() {
         initComponents();
         myCards = new JLabel[] {myCardLabel1, myCardLabel2, myCardLabel3, myCardLabel4, myCardLabel5};
         compCards = new JLabel[] {compCardLabel1, compCardLabel2, compCardLabel3, compCardLabel4, compCardLabel5};
+        myCPane = new JPanel[] {myCard1, myCard2, myCard3, myCard4, myCard5};
+        compCPane = new JPanel[] {compCard1, compCard2, compCard3, compCard4, compCard5};
         newGame = new GameState();
         myChips.setText(newGame.getMyChips()+"");
         compChips.setText(newGame.getCompChips()+"");
         statLabel.setText("Ante Up!");
+        callButton.setEnabled(false);
+        foldButton.setEnabled(false);
+        betButton.setEnabled(false);
     }
 
     /**
@@ -72,6 +82,9 @@ public class PokerGameGUI extends javax.swing.JFrame {
         myCard5 = new javax.swing.JPanel();
         myCardLabel5 = new javax.swing.JLabel();
         GenButton = new javax.swing.JButton();
+        betButton = new javax.swing.JButton();
+        callButton = new javax.swing.JButton();
+        foldButton = new javax.swing.JButton();
         statPanel = new javax.swing.JPanel();
         statLabel = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -84,20 +97,26 @@ public class PokerGameGUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        Header.setBackground(new java.awt.Color(215, 206, 199));
         Header.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(86, 86, 86));
         jLabel1.setText("Poker Game");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(86, 86, 86));
         jLabel3.setText("Computer's Chips: ");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(86, 86, 86));
         jLabel4.setText("Your Chips: ");
 
         myChips.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        myChips.setForeground(new java.awt.Color(86, 86, 86));
 
         compChips.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        compChips.setForeground(new java.awt.Color(86, 86, 86));
 
         javax.swing.GroupLayout HeaderLayout = new javax.swing.GroupLayout(Header);
         Header.setLayout(HeaderLayout);
@@ -137,11 +156,14 @@ public class PokerGameGUI extends javax.swing.JFrame {
                 .addGap(9, 9, 9))
         );
 
+        CompPanel.setBackground(new java.awt.Color(86, 86, 86));
         CompPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel2.setText("Computer's Cards");
+        jLabel2.setForeground(new java.awt.Color(215, 206, 199));
+        jLabel2.setText("Computer's Cards:");
 
+        compCard1.setBackground(new java.awt.Color(118, 50, 63));
         compCard1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         compCard1.setPreferredSize(new java.awt.Dimension(80, 109));
 
@@ -168,6 +190,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        compCard2.setBackground(new java.awt.Color(118, 50, 63));
         compCard2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         compCard2.setPreferredSize(new java.awt.Dimension(80, 109));
 
@@ -194,6 +217,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        compCard3.setBackground(new java.awt.Color(118, 50, 63));
         compCard3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         compCard3.setPreferredSize(new java.awt.Dimension(80, 109));
 
@@ -220,6 +244,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        compCard4.setBackground(new java.awt.Color(118, 50, 63));
         compCard4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         compCard4.setPreferredSize(new java.awt.Dimension(80, 109));
 
@@ -246,6 +271,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        compCard5.setBackground(new java.awt.Color(118, 50, 63));
         compCard5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         compCard5.setPreferredSize(new java.awt.Dimension(80, 109));
 
@@ -277,28 +303,29 @@ public class PokerGameGUI extends javax.swing.JFrame {
         CompPanelLayout.setHorizontalGroup(
             CompPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CompPanelLayout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(compCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(compCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(compCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(compCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(compCard5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(141, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CompPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(282, 282, 282))
+                .addGroup(CompPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(CompPanelLayout.createSequentialGroup()
+                        .addGap(111, 111, 111)
+                        .addComponent(compCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(compCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(28, 28, 28)
+                        .addComponent(compCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(compCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(compCard5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(CompPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CompPanelLayout.setVerticalGroup(
             CompPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CompPanelLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(CompPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(compCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(compCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,11 +335,14 @@ public class PokerGameGUI extends javax.swing.JFrame {
                 .addGap(60, 60, 60))
         );
 
+        MyPanel.setBackground(new java.awt.Color(86, 86, 86));
         MyPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         yourCards.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        yourCards.setText("Your Cards");
+        yourCards.setForeground(new java.awt.Color(215, 206, 199));
+        yourCards.setText("Your Cards:");
 
+        myCard1.setBackground(new java.awt.Color(118, 50, 63));
         myCard1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         myCard1.setMinimumSize(new java.awt.Dimension(100, 100));
         myCard1.setName(""); // NOI18N
@@ -341,6 +371,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 54, Short.MAX_VALUE)))
         );
 
+        myCard2.setBackground(new java.awt.Color(118, 50, 63));
         myCard2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         myCard2.setPreferredSize(new java.awt.Dimension(80, 109));
 
@@ -367,6 +398,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        myCard3.setBackground(new java.awt.Color(118, 50, 63));
         myCard3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         myCard3.setPreferredSize(new java.awt.Dimension(80, 109));
 
@@ -393,6 +425,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        myCard4.setBackground(new java.awt.Color(118, 50, 63));
         myCard4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         myCard4.setPreferredSize(new java.awt.Dimension(80, 109));
 
@@ -419,6 +452,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        myCard5.setBackground(new java.awt.Color(118, 50, 63));
         myCard5.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, java.awt.Color.white, null, null));
         myCard5.setPreferredSize(new java.awt.Dimension(80, 109));
 
@@ -445,12 +479,26 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        GenButton.setBackground(new java.awt.Color(215, 206, 199));
+        GenButton.setForeground(new java.awt.Color(118, 50, 63));
         GenButton.setText("Begin Round");
         GenButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 GenButtonActionPerformed(evt);
             }
         });
+
+        betButton.setBackground(new java.awt.Color(215, 206, 199));
+        betButton.setForeground(new java.awt.Color(118, 50, 63));
+        betButton.setText("Bet");
+
+        callButton.setBackground(new java.awt.Color(215, 206, 199));
+        callButton.setForeground(new java.awt.Color(118, 50, 63));
+        callButton.setText("Call");
+
+        foldButton.setBackground(new java.awt.Color(215, 206, 199));
+        foldButton.setForeground(new java.awt.Color(118, 50, 63));
+        foldButton.setText("Fold");
 
         javax.swing.GroupLayout MyPanelLayout = new javax.swing.GroupLayout(MyPanel);
         MyPanel.setLayout(MyPanelLayout);
@@ -461,8 +509,12 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addGroup(MyPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(GenButton)
-                        .addGap(185, 185, 185)
-                        .addComponent(yourCards))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(betButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(callButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(foldButton))
                     .addGroup(MyPanelLayout.createSequentialGroup()
                         .addGap(107, 107, 107)
                         .addComponent(myCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -473,13 +525,18 @@ public class PokerGameGUI extends javax.swing.JFrame {
                         .addGap(29, 29, 29)
                         .addComponent(myCard4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
-                        .addComponent(myCard5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(myCard5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(MyPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(yourCards)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MyPanelLayout.setVerticalGroup(
             MyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MyPanelLayout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(yourCards)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(MyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(myCard2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myCard3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -487,34 +544,44 @@ public class PokerGameGUI extends javax.swing.JFrame {
                     .addComponent(myCard5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(myCard1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(60, 60, 60)
-                .addGroup(MyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(yourCards)
-                    .addComponent(GenButton))
+                .addGroup(MyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GenButton)
+                    .addComponent(betButton)
+                    .addComponent(callButton)
+                    .addComponent(foldButton))
                 .addGap(20, 20, 20))
         );
 
+        statPanel.setBackground(new java.awt.Color(215, 206, 199));
+
         statLabel.setFont(new java.awt.Font("Tahoma", 0, 20)); // NOI18N
+        statLabel.setForeground(new java.awt.Color(86, 86, 86));
+        statLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout statPanelLayout = new javax.swing.GroupLayout(statPanel);
         statPanel.setLayout(statPanelLayout);
         statPanelLayout.setHorizontalGroup(
             statPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(statPanelLayout.createSequentialGroup()
-                .addGap(367, 367, 367)
-                .addComponent(statLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(119, 119, 119)
+                .addComponent(statLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 529, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(118, Short.MAX_VALUE))
         );
         statPanelLayout.setVerticalGroup(
             statPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(statPanelLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
-                .addComponent(statLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 13, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(statLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
         );
 
+        jMenuBar1.setBackground(new java.awt.Color(118, 50, 63));
+        jMenuBar1.setBorder(null);
+        jMenuBar1.setForeground(new java.awt.Color(118, 50, 63));
+
+        jMenu1.setBackground(new java.awt.Color(118, 50, 63));
         jMenu1.setBorder(null);
+        jMenu1.setForeground(new java.awt.Color(215, 206, 199));
         jMenu1.setText("File");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jMenu1.setOpaque(true);
 
         jMenuItem3.setText("New Game");
         jMenu1.add(jMenuItem3);
@@ -542,7 +609,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(Header, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(CompPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(2, 2, 2)
                 .addComponent(statPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -558,11 +625,16 @@ public class PokerGameGUI extends javax.swing.JFrame {
         newGame.dealCards();
         Card[] c = newGame.getMyCards();
         for (int i = 0; i < 5; i = i + 1){
-            javax.swing.JLabel tempLabel = myCards[i];
+            JLabel tempLabel = myCards[i];
+            JPanel tempPanel = myCPane[i];
             tempLabel.setText(c[i].getNumber()+ " "+c[i].getSuitCode());
             tempLabel.setForeground(c[i].getColor());
+            tempPanel.setBackground(tan);
         }
-        GenButton.setEnabled(false);
+        newGame.anteUp();
+        myChips.setText(newGame.getMyChips()+"");
+        compChips.setText(newGame.getCompChips()+"");
+        //GenButton.setEnabled(false);
 
     }//GEN-LAST:event_GenButtonActionPerformed
 
@@ -606,6 +678,8 @@ public class PokerGameGUI extends javax.swing.JFrame {
     private javax.swing.JButton GenButton;
     private javax.swing.JPanel Header;
     private javax.swing.JPanel MyPanel;
+    private javax.swing.JButton betButton;
+    private javax.swing.JButton callButton;
     private javax.swing.JPanel compCard1;
     private javax.swing.JPanel compCard2;
     private javax.swing.JPanel compCard3;
@@ -618,6 +692,7 @@ public class PokerGameGUI extends javax.swing.JFrame {
     private javax.swing.JLabel compCardLabel5;
     private javax.swing.JLabel compChips;
     private javax.swing.JLabel ex2;
+    private javax.swing.JButton foldButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
