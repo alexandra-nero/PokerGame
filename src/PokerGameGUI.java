@@ -623,6 +623,12 @@ public class PokerGameGUI extends javax.swing.JFrame {
     private void GenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GenButtonActionPerformed
         // TODO add your handling code here:
         newGame.dealCards();
+        Hand myHand = newGame.getMyHand();
+        Hand compHand = newGame.getCompHand();
+        //myHand.setRank();
+        //myHand.printHand();
+        //compHand.setRank();
+        //compHand.printHand();
         Card[] c = newGame.getMyCards();
         for (int i = 0; i < 5; i = i + 1){
             JLabel tempLabel = myCards[i];

@@ -51,6 +51,14 @@ public class GameState {
         compChips -= 5;
     }
     
+    public Hand getCompHand(){
+        return compHand;
+    }
+    
+    public Hand getMyHand(){
+        return myHand;
+    }
+    
     public int getCompChips(){
         return compChips;
     }

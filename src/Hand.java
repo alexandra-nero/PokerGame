@@ -27,6 +27,43 @@ public class Hand
     public Card[] getCards(){
         return cards;
     }
+    
+    public void setRank(){
+        if (this.hasRoyalFlush(true)){
+            rank = 9;
+        }
+        else if (this.hasStraightFlush(true)){
+            rank = 8;
+        }
+        else if (this.hasFourOfAKind(true)){
+            rank = 7;
+        }
+        else if (this.hasFullHouse(true)){
+            rank = 6;
+        }
+        else if (this.hasFlush(true)){
+            rank = 5;
+        }
+        else if (this.hasStraight(true)){
+            rank = 4;
+        }
+        else if (this.hasThreeOfAKind(true)){
+            rank = 3;
+        }
+        else if (this.hasTwoPair(true)){
+            rank = 2;
+        }
+        else if (this.hasOnePair(true)){
+            rank = 1;
+        }
+        else {
+            rank = 0;
+        }
+    }
+    
+    public int getRank(){
+        return rank;
+    }
 
     public boolean isOrdered(){
       for (int i = 0; i <5; i = i + 1){
@@ -163,7 +200,6 @@ public class Hand
               return true;
             }
             else if (cards[i].getNumberValue() != (number + i)){
-              cards[i].print();
                 return false;
             }
         }
@@ -265,5 +301,6 @@ public class Hand
         for (int i = 0; i < 5; i = i + 1){
             System.out.println("card: " + cards[i].getSuit()+ cards[i].getNumber());
         }
+        System.out.println("rank: " + rank);
     }
 }
